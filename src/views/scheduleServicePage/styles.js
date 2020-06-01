@@ -1,14 +1,19 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {flexDirection: 'row', paddingTop: 10, flexShrink: 1},
+  container: {paddingTop: 10, flexShrink: 1},
   chipAddMore: {
-    marginHorizontal: 10,
+    marginHorizontal: 15,
     marginVertical: 5,
   },
-  textStyleChips: (rowTitle, serviceTitle) => ({
-    color: rowTitle === serviceTitle ? 'yellow' : '#fff',
-  }),
+  containerServiceSelected: {
+    minWidth: '80%',
+    minHeight: '40%',
+    marginVertical: 25,
+    borderRadius: 5,
+    alignSelf: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
 });
 
 export default styles;

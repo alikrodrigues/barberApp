@@ -1,6 +1,7 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import {Appbar} from 'react-native-paper';
+import {Actions} from 'react-native-router-flux';
 
 export default ({children, title, subtitle, style, hiddenHeader}) => (
   <ImageBackground
@@ -9,6 +10,7 @@ export default ({children, title, subtitle, style, hiddenHeader}) => (
     source={require('../../assets/logo/invictus.png')}>
     {hiddenHeader ? null : (
       <Appbar.Header style={styles.appHeader}>
+        <Appbar.BackAction onPress={() => Actions.pop()} />
         <Appbar.Content title={title} subtitle={subtitle} />
       </Appbar.Header>
     )}

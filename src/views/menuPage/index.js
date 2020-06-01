@@ -5,8 +5,11 @@ import styles from './styles';
 import {Actions} from 'react-native-router-flux';
 import Template from '../../components/template';
 import options from '../../data';
+import {useServicesList} from '../../context/Services';
 
 function MenuPage() {
+  const {setServices} = useServicesList();
+
   return (
     <Template title={'Serviços'} subtitle={'disponiveis'}>
       <FlatList
@@ -15,7 +18,12 @@ function MenuPage() {
         renderItem={rowData => (
           <Menu
             key={rowData.index}
-            onPress={() => Actions.scheduleService({service: rowData.item})}
+            onPress={() => {
+              let serviceList = [];
+              serviceList.push(rowData.item);
+              setServices(serviceList);
+              Actions.scheduleService();
+            }}
             option={rowData.item}
           />
         )}
