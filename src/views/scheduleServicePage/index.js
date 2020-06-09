@@ -13,42 +13,6 @@ function ScheduleServicePage() {
   const {services} = useContext(ServicesContext);
   const [addMore, setAddMore] = useState(false);
 
-  const renderRow = item => {
-    return (
-      <View
-        key={item.title}
-        style={{
-          borderBottomWidth: 0.8,
-          borderBottomColor: '#000',
-          paddingLeft: 15,
-          minHeight: '10%',
-          flexDirection: 'row',
-          paddingTop: 2,
-          paddingBottom: 2,
-        }}>
-        <Title style={{color: '#fff', flex: 1}}>{item.title}</Title>
-        <TextMask
-          style={{
-            textAlign: 'right',
-            color: '#fff',
-            flex: 1,
-            alignSelf: 'center',
-            fontSize: 20,
-          }}
-          type={'money'}
-          options={{
-            precision: 2,
-            separator: ',',
-            delimiter: '.',
-            unit: 'R$',
-            suffixUnit: '',
-          }}
-          value={item.price}
-        />
-      </View>
-    );
-  };
-
   return (
     <Template title={'Agendamento'}>
       <View style={styles.container}>

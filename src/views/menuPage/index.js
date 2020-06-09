@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import {FlatList} from 'react-native';
 import Menu from '../../components/menu';
 import styles from './styles';
 import {Actions} from 'react-native-router-flux';
 import Template from '../../components/template';
 import options from '../../data';
-import {useServicesList, ServicesContext} from '../../context/Services';
+import {ServicesContext} from '../../context/Services';
 
 function MenuPage() {
   const {saveServices} = useContext(ServicesContext);

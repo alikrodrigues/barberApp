@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {Chip} from 'react-native-paper';
 import styles from './styles';
-import {Actions} from 'react-native-router-flux';
 import {ServicesContext} from '../../context/Services';
 
 function CustomChip({item}) {

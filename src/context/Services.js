@@ -22,9 +22,3 @@ export const ServicesProvider = ({children}) => {
     </ServicesContext.Provider>
   );
 };
-
-export function useServicesList() {
-  const context = useContext(ServicesContext);
-  const {services, setServices} = context;
-  return {services, setServices};
-}
