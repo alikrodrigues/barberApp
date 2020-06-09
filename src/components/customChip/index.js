@@ -1,28 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Chip} from 'react-native-paper';
 import styles from './styles';
-import {useServicesList} from '../../context/Services';
-import { Actions } from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
+import {ServicesContext} from '../../context/Services';
 
 function CustomChip({item}) {
-  const {services, setServices} = useServicesList();
   const [hasInSelected, setHasIn] = useState(false);
-  const [index, setIndex] = useState(null);
+  const {services, saveServices} = useContext(ServicesContext);
 
-  useEffect(hasInSelecteds, []);
-
-  function hasInSelecteds() {
-    var found = services.findIndex(function(element) {
-      return element.title === item.title;
-    });
-
-    if (found >= 0) {
-      setIndex(found);
-      setHasIn(true);
-    } else {
-      setHasIn(false);
-    }
-  }
+  useEffect(() => {
+    let hasIn = services.includes(item);
+    setHasIn(hasIn);
+  }, [item, services]);
 
   return (
     <>
@@ -30,15 +19,8 @@ function CustomChip({item}) {
         textStyle={styles.textStyleChips(hasInSelected)}
         style={styles.styleChips(hasInSelected)}
         onPress={() => {
-          let copyServices = services;
-          if (hasInSelected) {
-            copyServices.splice(index);
-          } else {
-            copyServices.push(item);
-          }
-          if (copyServices.length === 0) Actions.pop();
-          setServices(copyServices);
-          hasInSelecteds();
+          setHasIn(currentValue => !currentValue);
+          saveServices(item);
         }}>
         {item.title}
       </Chip>

@@ -1,15 +1,53 @@
-import React, {useState} from 'react';
-import {Chip, Title} from 'react-native-paper';
+import React, {useState, useContext, useEffect} from 'react';
+import {Chip, Title, Button} from 'react-native-paper';
 import styles from './styles';
 import {View, FlatList, Text} from 'react-native';
 import Template from '../../components/template';
 import options from '../../data';
 import CustomChip from '../../components/customChip';
-import {useServicesList} from '../../context/Services';
+import ListServicesSelecteds from '../../components/listServicesSelected';
+import {TextMask} from 'react-native-masked-text';
+import {ServicesContext} from '../../context/Services';
 
-function ScheduleServicePage({service}) {
+function ScheduleServicePage() {
+  const {services} = useContext(ServicesContext);
   const [addMore, setAddMore] = useState(false);
-  const {services} = useServicesList();
+
+  const renderRow = item => {
+    return (
+      <View
+        key={item.title}
+        style={{
+          borderBottomWidth: 0.8,
+          borderBottomColor: '#000',
+          paddingLeft: 15,
+          minHeight: '10%',
+          flexDirection: 'row',
+          paddingTop: 2,
+          paddingBottom: 2,
+        }}>
+        <Title style={{color: '#fff', flex: 1}}>{item.title}</Title>
+        <TextMask
+          style={{
+            textAlign: 'right',
+            color: '#fff',
+            flex: 1,
+            alignSelf: 'center',
+            fontSize: 20,
+          }}
+          type={'money'}
+          options={{
+            precision: 2,
+            separator: ',',
+            delimiter: '.',
+            unit: 'R$',
+            suffixUnit: '',
+          }}
+          value={item.price}
+        />
+      </View>
+    );
+  };
 
   return (
     <Template title={'Agendamento'}>
@@ -29,10 +67,16 @@ function ScheduleServicePage({service}) {
           onPress={() => setAddMore(current => setAddMore(!current))}>
           {addMore ? 'Voltar' : 'Mais serviços'}
         </Chip>
-        <View style={styles.containerServiceSelected}>
-          <Text>{services[0].title}</Text>
-          <Text>{services[1]?.title}</Text>
-        </View>
+      </View>
+      <ListServicesSelecteds />
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Button
+          color={'#fff'}
+          mode="outlined"
+          style={{borderColor: '#fff', backgroundColor: 'rgba(0, 0, 0, 0.4)'}}
+          onPress={() => {}}>
+          Proximo
+        </Button>
       </View>
     </Template>
   );
