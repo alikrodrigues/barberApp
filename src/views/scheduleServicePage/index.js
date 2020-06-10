@@ -1,13 +1,14 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {Chip, Title, Button} from 'react-native-paper';
+import {Chip} from 'react-native-paper';
 import styles from './styles';
-import {View, FlatList, Text} from 'react-native';
+import {View, FlatList} from 'react-native';
 import Template from '../../components/template';
 import options from '../../data';
 import CustomChip from '../../components/customChip';
 import ListServicesSelecteds from '../../components/listServicesSelected';
-import {TextMask} from 'react-native-masked-text';
 import {ServicesContext} from '../../context/Services';
+import CustomButton from '../../components/customButton';
+import { Actions } from 'react-native-router-flux';
 
 function ScheduleServicePage() {
   const {services} = useContext(ServicesContext);
@@ -22,7 +23,11 @@ function ScheduleServicePage() {
           keyExtractor={item => item.title}
           contentContainerStyle={{marginHorizontal: 10}}
           renderItem={rowData => (
-            <CustomChip key={rowData.index} item={rowData.item} />
+            <CustomChip
+              isService={true}
+              key={rowData.index}
+              item={rowData.item}
+            />
           )}
         />
         <Chip
@@ -33,15 +38,7 @@ function ScheduleServicePage() {
         </Chip>
       </View>
       <ListServicesSelecteds />
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Button
-          color={'#fff'}
-          mode="outlined"
-          style={{borderColor: '#fff', backgroundColor: 'rgba(0, 0, 0, 0.4)'}}
-          onPress={() => {}}>
-          Proximo
-        </Button>
-      </View>
+      <CustomButton onPress={() => Actions.scheduleProfessional()} />
     </Template>
   );
 }
