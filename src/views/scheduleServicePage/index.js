@@ -38,7 +38,7 @@ function ScheduleServicePage() {
         </Chip>
       </View>
       <ListServicesSelecteds />
-      <CustomButton onPress={() => Actions.scheduleProfessional()} />
+      <CustomButton onPress={() => Actions.scheduleDate()} />
     </Template>
   );
 }
