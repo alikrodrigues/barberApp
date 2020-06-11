@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   styleChips: hasInSelecteds => ({
     marginHorizontal: 10,
     marginVertical: 5,
-    backgroundColor: hasInSelecteds ? '#ebebeb' : 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: hasInSelecteds ? '#ebebeb' : 'rgba(0, 0, 0, 0.6)',
   }),
 });
 

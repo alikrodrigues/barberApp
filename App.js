@@ -5,6 +5,8 @@ import {SafeAreaView, View, StyleSheet} from 'react-native';
 import GeneralStatusBar from './src/components/statusBar';
 import Routes from './Routes';
 import {ServicesProvider} from './src/context/Services';
+import {ShiftsProvider} from './src/context/Shifts';
+import {ProfessionalProvider} from './src/context/Professional';
 
 const theme = {
   ...DefaultTheme,
@@ -21,7 +23,11 @@ const App = () => {
       <GeneralStatusBar backgroundColor="#141414" barStyle="dark-content" />
       <SafeAreaView style={[styles.screen]}>
         <ServicesProvider>
-          <Routes />
+          <ShiftsProvider>
+            <ProfessionalProvider>
+              <Routes />
+            </ProfessionalProvider>
+          </ShiftsProvider>
         </ServicesProvider>
       </SafeAreaView>
       <SafeAreaView opacity={0.2} style={styles.safeAreaDown} />
