@@ -2,9 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import {Chip} from 'react-native-paper';
 import styles from './styles';
 import {ServicesContext} from '../../context/Services';
-import {ShiftsContext, ShiftsProvider} from '../../context/Shifts';
+import {ShiftsContext} from '../../context/Shifts';
 
-function CustomChip({item, isService}) {
+function CustomChip({item, isService, onPress}) {
   const [hasInSelected, setHasIn] = useState(false);
   const {services, saveServices} = useContext(ServicesContext);
   const {shift, saveShift} = useContext(ShiftsContext);
@@ -37,7 +37,7 @@ function CustomChip({item, isService}) {
       <Chip
         textStyle={styles.textStyleChips(hasInSelected)}
         style={styles.styleChips(hasInSelected)}
-        onPress={handlePressChip}>
+        onPress={onPress ? onPress : handlePressChip}>
         {item.title ? item.title : item.label}
       </Chip>
     </>

@@ -5,7 +5,7 @@ import {Title} from 'react-native-paper';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {LocaleConfig} from 'react-native-calendars';
 import Moment from 'moment';
-import { Actions } from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
 
 const ScheduleDatePage = () => {
   const [todayDate, setTodayDate] = useState(new Date());
