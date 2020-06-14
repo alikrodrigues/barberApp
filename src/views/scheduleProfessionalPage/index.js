@@ -32,7 +32,13 @@ const ScheduleProfessionalPage = () => {
             keyExtractor={item => item.id}
             contentContainerStyle={styles.containerShifts}
             renderItem={rowData => (
-              <CustomChip key={rowData.index} item={rowData.item} />
+              <CustomChip
+                key={rowData.index}
+                item={rowData.item}
+                onPress={() => {
+                  Actions.registerCustomer();
+                }}
+              />
             )}
           />
           <Snackbar
@@ -48,7 +54,6 @@ const ScheduleProfessionalPage = () => {
           </Snackbar>
         </>
       )}
-      <CustomButton onPress={() => {}} />
     </Template>
   );
 };

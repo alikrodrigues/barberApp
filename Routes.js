@@ -5,6 +5,7 @@ import ScheduleServicePage from './src/views/scheduleServicePage';
 import MainPage from './src/views/mainPage';
 import ScheduleProfessionalPage from './src/views/scheduleProfessionalPage';
 import ScheduleDatePage from './src/views/scheduleDatePage';
+import RegisterCustomer from './src/views/registerCustomer';
 
 export default () => (
   <Router getSceneStyle={sceneStyle}>
@@ -25,6 +26,11 @@ export default () => (
         key="scheduleDate"
         component={ScheduleDatePage}
         title="scheduleDate"
+      />
+      <Scene
+        key="registerCustomer"
+        component={RegisterCustomer}
+        title="registerCustomer"
       />
     </Scene>
   </Router>
