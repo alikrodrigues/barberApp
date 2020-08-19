@@ -1,7 +1,7 @@
 import React from 'react';
 import DefaultTheme from 'react-native-paper/lib/commonjs/styles/DefaultTheme';
 import Provider from 'react-native-paper/lib/commonjs/core/Provider';
-import {SafeAreaView, View, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import GeneralStatusBar from './src/components/statusBar';
 import Routes from './Routes';
 import {ServicesProvider} from './src/context/Services';

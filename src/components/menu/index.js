@@ -10,7 +10,7 @@ export default function Menu({option, ...props}) {
       style={{
         height: 100,
         marginVertical: 10,
-        backgroundColor: 'rgba(44, 47, 51, 0.2)'
+        backgroundColor: 'rgba(44, 47, 51, 0.2)',
       }}>
       <Card.Content
         style={{
@@ -20,14 +20,14 @@ export default function Menu({option, ...props}) {
         <View
           style={{
             flex: 1,
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
           }}>
           <Title
             style={{
               textAlign: 'justify',
-              color: '#fff'
+              color: '#fff',
             }}>
-            {option.title}
+            {option.name}
           </Title>
           <TextMask
             style={{textAlign: 'justify', color: '#fff'}}
@@ -52,12 +52,14 @@ export default function Menu({option, ...props}) {
         />
         <View
           style={{justifyContent: 'center', alignItems: 'center', padding: 10}}>
-          <Image
-            style={{height: 80, width: 110, borderRadius: 8}}
-            source={{
-              uri: option.image,
-            }}
-          />
+          {option.picture && (
+            <Image
+              style={{height: 80, width: 110, borderRadius: 8}}
+              source={{
+                uri: option.picture,
+              }}
+            />
+          )}
         </View>
       </Card.Content>
     </Card>

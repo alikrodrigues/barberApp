@@ -11,8 +11,8 @@ const ListServicesSelecteds = () => {
 
   const renderRow = item => {
     return (
-      <View key={item.title} style={styles.containerRow}>
-        <Text style={styles.title}>{item.title}</Text>
+      <View key={item.id} style={styles.containerRow}>
+        <Text style={styles.title}>{item.name}</Text>
         <TextMask
           style={styles.price}
           type={'money'}
@@ -37,7 +37,7 @@ const ListServicesSelecteds = () => {
         data={serviceContext.services}
         contentContainerStyle={styles.flatContainer}
         renderItem={rowData => renderRow(rowData.item)}
-        keyExtractor={item => item.title}
+        keyExtractor={item => item.id}
       />
     </>
   );

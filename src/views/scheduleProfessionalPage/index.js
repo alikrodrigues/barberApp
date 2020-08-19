@@ -1,21 +1,30 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Template from '../../components/template';
 import {Title, Snackbar} from 'react-native-paper';
 import {View, FlatList} from 'react-native';
 import CustomAvatar from '../../components/customAvatar';
-import horarios from '../../data/horarios';
 import CustomChip from '../../components/customChip';
 import styles from './styles';
-import CustomButton from '../../components/customButton';
 import {Actions} from 'react-native-router-flux';
 import {ProfessionalContext} from '../../context/Professional';
-import professionals from '../../data/professionals';
+import api from '../../services/api';
+// import professionals from '../../data/professionals';
 
-const ScheduleProfessionalPage = () => {
+const ScheduleProfessionalPage = ({selectedDay}) => {
   const {professional} = useContext(ProfessionalContext);
+  const [professionals, setProfessionals] = useState(null);
+
+  useEffect(() => {
+    let dayOfWeek = selectedDay.getDay();
+    api.get(`collaborators/free/${dayOfWeek}`).then(response => {
+      if (response.status === 200) {
+        setProfessionals(response.data);
+      }
+    });
+  }, [selectedDay]);
 
   return (
-    <Template title={'Profissionais'} subtitle={'disponiveis'}>
+    <Template title={'Profissionais'} subtitle={'disponíveis'}>
       <Title style={{textAlign: 'center', marginTop: 10, color: '#fff'}}>
         Selecione um profissional
       </Title>

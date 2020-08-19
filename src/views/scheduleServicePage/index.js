@@ -3,16 +3,25 @@ import {Chip} from 'react-native-paper';
 import styles from './styles';
 import {View, FlatList} from 'react-native';
 import Template from '../../components/template';
-import options from '../../data';
 import CustomChip from '../../components/customChip';
 import ListServicesSelecteds from '../../components/listServicesSelected';
 import {ServicesContext} from '../../context/Services';
 import CustomButton from '../../components/customButton';
-import { Actions } from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
+import api from '../../services/api';
 
 function ScheduleServicePage() {
   const {services} = useContext(ServicesContext);
   const [addMore, setAddMore] = useState(false);
+  const [options, setOptions] = useState(null);
+
+  useEffect(() => {
+    api.get('services').then(response => {
+      if (response.status === 200) {
+        setOptions(response.data);
+      }
+    });
+  }, []);
 
   return (
     <Template title={'Agendamento'}>
@@ -20,7 +29,7 @@ function ScheduleServicePage() {
         <FlatList
           data={addMore ? options : services}
           numColumns={2}
-          keyExtractor={item => item.title}
+          keyExtractor={item => item.id}
           contentContainerStyle={{marginHorizontal: 10}}
           renderItem={rowData => (
             <CustomChip

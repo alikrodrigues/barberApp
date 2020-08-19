@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Template from '../../components/template';
 import {View} from 'react-native';
 import {Title} from 'react-native-paper';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
 import {LocaleConfig} from 'react-native-calendars';
 import Moment from 'moment';
 import {Actions} from 'react-native-router-flux';

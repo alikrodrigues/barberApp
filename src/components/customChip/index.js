@@ -38,7 +38,7 @@ function CustomChip({item, isService, onPress}) {
         textStyle={styles.textStyleChips(hasInSelected)}
         style={styles.styleChips(hasInSelected)}
         onPress={onPress ? onPress : handlePressChip}>
-        {item.title ? item.title : item.label}
+        {item.name ? item.name : item.label}
       </Chip>
     </>
   );
